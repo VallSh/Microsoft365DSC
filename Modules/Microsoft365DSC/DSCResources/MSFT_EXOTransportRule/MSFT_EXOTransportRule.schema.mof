@@ -1,0 +1,12 @@
+[ClassVersion("1.0.0.0"), FriendlyName("EXOTransportRule")]
+class MSFT_EXOTransportRule : OMI_BaseResource
+{
+    [Key, Description("The Name parameter specifies a unique name for the transport rule.")] String Name;
+    [Write, Description("The SenderDomainIs parameter specifies a condition that looks for senders with email addresss in the specified domains. You can specify multiple domains separated by commas.")] String[] SenderDomainIs;
+    [Write, Description("The RejectMessageEnhancedStatusCode parameter specifies the enhanced status code that's used when the rule rejects messages. Valid values are 5.7.1 or between 5.7.900 and 5.7.999.")] String RejectMessageEnhancedStatusCode;
+    [Write, Description("The RejectMessageReasonText parameter specifies the explanation text that's used when the rule rejects messages")] String RejectMessageReasonText;
+    [Write, Description("The RecipientAddressContainsWords parameter specifies a condition that looks for words in recipient email addresses. You can specify multiple words separated by commas. This parameter works when the recipient is an individual user. This parameter doesn't work with distribution groups.")] String RecipientAddressContainsWords;
+    [Write, Description("The Comments parameter specifies optional descriptive text for the rule. The length of the comment can't exceed 1024 characters")] String Comments;
+    [Write, Description("Present ensures the user exists, absent ensures it is removed"), ValueMap{"Present","Absent"}, Values{"Present","Absent"}] String Ensure;
+    [Write, Description("Credentials of the Exchange Global Admin"), EmbeddedInstance("MSFT_Credential")] String GlobalAdminAccount;
+};
